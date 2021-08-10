@@ -16,9 +16,43 @@ public class RedSocial {
     String nombre;
     ArrayList<Usuario> listaUsuarios;
     
-    ArrayList<Publicacion> listaPublicaciones;
-    //Constructor
-    public RedSocial(String nombre){
+    //getter del nombre de la red social
+    public String getNombre(){
+        return nombre;
+    }
+    
+    //getter de la lista de usuarios de la red social
+    public ArrayList getListaUsuarios(){
+        return listaUsuarios;
+    }
+    
+    //setter del nombre de la red social
+    public void setNombre(String nombre){
         this.nombre = nombre;
+    }
+    
+    /**
+    * funcionalidad Register que agrega un nuevo usuario a la lista de usuarios de la red social
+    * @red social
+    * @param nombre
+    * @param contrasena
+    * @return red social
+    */
+    public void register(String nombre, String contrasena){
+        int verificador = 1;
+        for (Usuario i:this.listaUsuarios ){
+            if (i.nombre == nombre){
+                verificador = 0;
+            }
+        }
+        if (verificador == 0){
+            System.out.println("Ya existe este nombre de usuario");
+        }
+        else {
+            Usuario nuevoUsuario = new Usuario();
+            nuevoUsuario.setNombre(nombre);
+            nuevoUsuario.setContrasena(contrasena);
+            this.listaUsuarios.add(nuevoUsuario);
+        }
     }
 }

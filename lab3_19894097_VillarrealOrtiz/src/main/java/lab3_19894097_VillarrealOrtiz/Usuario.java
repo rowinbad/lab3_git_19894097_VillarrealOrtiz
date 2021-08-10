@@ -17,10 +17,32 @@ public class Usuario {
     String nombre;
     String contrasena;
     ArrayList<Publicacion> listaPublicaciones;
-    //Constructor
+    //Metodos
+    
+    //getter del nombre del usuario
+    public String getNombre(){
+        return nombre;
+    }
+    
+    //getter de publicaciones del usuario
+    public ArrayList getListaPublicaciones(){
+        return listaPublicaciones;
+    }
+    
+    //setter de nombre del usuario
+    public void setNombre(String nombre){
+        this.nombre = nombre;
+    }
+    
+    //setter de la constrasena del usuario
+    public void setContrasena(String constrasena){
+        this.contrasena = constrasena;
+    }
+    
+    /*
     public Usuario(String nombre, String contrasena){
         this.nombre = nombre;
         this.contrasena = contrasena;
         //this.id = 
-    }
+    }*/
 }

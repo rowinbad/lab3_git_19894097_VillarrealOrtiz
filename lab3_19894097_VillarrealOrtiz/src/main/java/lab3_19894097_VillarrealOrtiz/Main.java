@@ -15,17 +15,22 @@ public class Main {
 
     public static void main(String[] args) {
         // TODO code application logic here
+        RedSocial rs = new RedSocial();
+        rs.setNombre("GramInsta");
+        
         int activo = 0;
-        Scanner entrada = new Scanner(System.in);
         int menu = 1;
+        
+        Scanner entrada = new Scanner(System.in);
+        
         while (menu != 0){
-            System.out.println("### RED SOCIAL : GramInsta ###");
+            System.out.println("### RED SOCIAL : "+rs.getNombre()+" ###");
             if (activo == 0){
                 System.out.println("### Authentication ###");
                 System.out.println("Elija su opcion");
-                System.out.println("1. Register");
-                System.out.println("2. Login");
-                System.out.println("0. Salir del programa");
+                System.out.println("1. Register");              //funcionalidad Register
+                System.out.println("2. Login");                 //funcionalidad Login
+                System.out.println("0. Salir del programa");    
                 menu = entrada.nextInt();
                 //varios if para las funciones
             }
@@ -44,5 +49,5 @@ public class Main {
         }
         System.out.println("Cerrando Programa");
     }
-    
+        
 }

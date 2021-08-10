@@ -6,6 +6,7 @@
 package lab3_19894097_VillarrealOrtiz;
 
 import java.util.Scanner;
+import java.util.ArrayList;
 
 /**
  *
@@ -15,12 +16,11 @@ public class Main {
 
     public static void main(String[] args) {
         // TODO code application logic here
-        RedSocial rs = new RedSocial();
-        rs.setNombre("GramInsta");
+        RedSocial rs = new RedSocial("GramInsta");
         
         int activo = 0;
         int menu = 1;
-        
+        String lectura;
         Scanner entrada = new Scanner(System.in);
         
         while (menu != 0){
@@ -33,6 +33,18 @@ public class Main {
                 System.out.println("0. Salir del programa");    
                 menu = entrada.nextInt();
                 //varios if para las funciones
+                if (menu == 1){
+                    System.out.println("Ingrese nombre: ");
+                    entrada.nextLine();
+                    String lecturaNombre = entrada.nextLine();
+                    System.out.println("Ingrese contrasena: ");
+                    String lecturaContrasena = entrada.nextLine();
+                    rs.register(lecturaNombre,lecturaContrasena);
+                    /*System.out.println("el numero de usuarios es: "+rs.getNumeroUsuarios());
+                    Usuario prueba = (Usuario) rs.getListaUsuarios().get(0);
+                    String prueba1 = prueba.getNombre();
+                    System.out.println("el nombre del primer usuario es: "+prueba1);*/
+                }
             }
             else {
                 System.out.println("### Registrado como: (getUsuario a partir de ID ###");

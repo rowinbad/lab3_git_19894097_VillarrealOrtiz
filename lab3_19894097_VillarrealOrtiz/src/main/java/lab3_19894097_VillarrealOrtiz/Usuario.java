@@ -19,14 +19,14 @@ public class Usuario {
     ArrayList<Publicacion> listaPublicaciones;
     //Metodos
     
-    //getter del nombre del usuario
-    public String getNombre(){
-        return nombre;
-    }
-    
     //getter de publicaciones del usuario
     public ArrayList getListaPublicaciones(){
         return listaPublicaciones;
+    }
+    
+    //getter del nombre del usuario
+    public String getNombre(){
+        return nombre;
     }
     
     //setter de nombre del usuario
@@ -34,9 +34,24 @@ public class Usuario {
         this.nombre = nombre;
     }
     
+    //getter de la contrasena del usuario
+    public String getContrasena(){
+        return contrasena;
+    }
+    
     //setter de la constrasena del usuario
     public void setContrasena(String constrasena){
         this.contrasena = constrasena;
+    }
+    
+    //getter del ID del usuario
+    public int getID(){
+        return id;
+    }
+    
+    //setter del ID del usuario
+    public void setID(int id){
+        this.id = id;
     }
     
     /*

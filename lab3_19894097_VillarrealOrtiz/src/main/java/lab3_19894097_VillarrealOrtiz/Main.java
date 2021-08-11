@@ -20,7 +20,6 @@ public class Main {
         
         int activo = 0;
         int menu = 1;
-        String lectura;
         Scanner entrada = new Scanner(System.in);
         
         while (menu != 0){
@@ -45,18 +44,29 @@ public class Main {
                     String prueba1 = prueba.getNombre();
                     System.out.println("el nombre del primer usuario es: "+prueba1);*/
                 }
+                if (menu == 2){
+                    System.out.println("Ingrese nombre: ");
+                    entrada.nextLine();
+                    String lecturaNombre = entrada.nextLine();
+                    System.out.println("Ingrese contrasena: ");
+                    String lecturaContrasena = entrada.nextLine();
+                    rs.login(lecturaNombre,lecturaContrasena);
+                }
             }
-            else {
+            while ((rs.activoID != 0)&&(menu != 0)) {
                 System.out.println("### Registrado como: (getUsuario a partir de ID ###");
                 System.out.println("Elija su opcion");
                 System.out.println("1. Realizar publicacion");  //funcionalidad Post
                 System.out.println("2. Seguir a un usuario");   //funcionalidad Follow
                 System.out.println("3. Compartir publicacion"); //funcionalidad Share
                 System.out.println("4. Visualizar red social"); //funcionalidad visualize
-                System.out.println("5. Cerrar sesión");         //funcionalidad Logout
+                System.out.println("5. Cerrar sesion");         //funcionalidad Logout
                 System.out.println("0. Salir del programa");
                 menu = entrada.nextInt();
                 //varios if para las funciones
+                if (menu == 5){
+                    rs.setActivoID(0);
+                }
             }
         }
         System.out.println("Cerrando Programa");

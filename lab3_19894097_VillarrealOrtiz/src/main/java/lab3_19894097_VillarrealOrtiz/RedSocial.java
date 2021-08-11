@@ -15,6 +15,8 @@ public class RedSocial {
     //Atributos
     String nombre;
     int numeroUsuarios, numeroPublicaciones, numeroComentarios, numeroReacciones;
+    int activoID;
+    Usuario usuarioActivo;
     ArrayList<Usuario> listaUsuarios;
     
     // Metodos
@@ -74,6 +76,16 @@ public class RedSocial {
         this.numeroReacciones = num;
     }
     
+    //getter del numero de reacciones de la red social
+    public int getActivoID(){
+        return activoID;
+    }
+    
+    //setter del numero de reacciones de la red social
+    public void setActivoID(int num){
+        this.activoID = num;
+    }
+    
     //constructor
     public RedSocial(String nombre){
         this.nombre = nombre;
@@ -81,6 +93,7 @@ public class RedSocial {
         this.numeroPublicaciones = 0;
         this.numeroComentarios = 0;
         this.numeroReacciones = 0;
+        this.activoID = 0;
         listaUsuarios = new ArrayList<Usuario>();
     }
     /**
@@ -92,7 +105,7 @@ public class RedSocial {
     */
     public void register(String nombre, String contrasena){
         int verificador = 1;
-        for (int i=0; i<this.getNumeroUsuarios();i++){
+        for (int i=0; i<numeroUsuarios;i++){
             if (listaUsuarios.get(i).getNombre().equals(nombre)){
                 verificador = 0;
             }
@@ -109,5 +122,28 @@ public class RedSocial {
             listaUsuarios.add(nuevoUsuario);
             System.out.println("usuario "+listaUsuarios.get(numeroUsuarios-1).getNombre()+" anadido");
         }
+    }
+    public void login(String nombre, String contrasena){
+        int verificador = 1;
+        for (int i=0; i<numeroUsuarios;i++){
+            if ((this.listaUsuarios.get(i).getNombre().equals(nombre))&&(listaUsuarios.get(i).getContrasena().equals(contrasena))){
+                verificador = 0;
+                activoID = i+1;
+                usuarioActivo = listaUsuarios.get(i);
+                i=numeroUsuarios;
+            }
+        }
+        if (verificador == 1){
+            System.out.println("No existe el usuario o no coinciden los datos de ingreso");
+        }
+        /*else {
+            this.activoID = numeroUsuarios
+            nuevoUsuario.setNombre(nombre);
+            nuevoUsuario.setContrasena(contrasena);
+            numeroUsuarios += 1;
+            nuevoUsuario.setID(numeroUsuarios);
+            listaUsuarios.add(nuevoUsuario);
+            System.out.println("usuario "++" ahora activo");
+        }*/
     }
 }

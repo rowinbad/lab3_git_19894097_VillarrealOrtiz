@@ -54,7 +54,7 @@ public class Main {
                 }
             }
             while ((rs.activoID != 0)&&(menu != 0)) {
-                System.out.println("### Registrado como: (getUsuario a partir de ID ###");
+                System.out.println("### Registrado como: "+rs.getUsuarioActivo().getNombre()+" ###");
                 System.out.println("Elija su opcion");
                 System.out.println("1. Realizar publicacion");  //funcionalidad Post
                 System.out.println("2. Seguir a un usuario");   //funcionalidad Follow
@@ -64,6 +64,12 @@ public class Main {
                 System.out.println("0. Salir del programa");
                 menu = entrada.nextInt();
                 //varios if para las funciones
+                if (menu == 2){
+                    System.out.println("Ingrese nombre: ");
+                    entrada.nextLine();
+                    String lecturaNombre = entrada.nextLine();
+                    rs.follow(lecturaNombre);
+                }
                 if (menu == 5){
                     rs.setActivoID(0);
                 }

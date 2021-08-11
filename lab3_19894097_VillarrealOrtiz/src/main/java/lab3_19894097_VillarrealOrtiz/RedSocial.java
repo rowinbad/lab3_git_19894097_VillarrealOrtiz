@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class RedSocial {
     //Atributos
-    String nombre;
+    String nombreRS;
     int numeroUsuarios, numeroPublicaciones, numeroComentarios, numeroReacciones;
     int activoID;
     Usuario usuarioActivo;
@@ -26,14 +26,25 @@ public class RedSocial {
         return listaUsuarios;
     }
     
+    //getter de un usuario a partir de su nombre
+    public Usuario getUsuario(String nombreUsuario){
+        for (int i=0; i<numeroUsuarios;i++){
+            if (listaUsuarios.get(i).getNombre().equals(nombreUsuario)){
+                return listaUsuarios.get(i);
+            }
+        }
+        System.out.println("usuario no encontrado");
+        return null;
+    }
+    
     //getter del nombre de la red social
     public String getNombre(){
-        return nombre;
+        return nombreRS;
     }
     
     //setter del nombre de la red social
     public void setNombre(String nombre){
-        this.nombre = nombre;
+        this.nombreRS = nombre;
     }
     
     //getter del numero de usuarios de la red social
@@ -86,9 +97,19 @@ public class RedSocial {
         this.activoID = num;
     }
     
+    //getter del numero de reacciones de la red social
+    public Usuario getUsuarioActivo(){
+        return usuarioActivo;
+    }
+    /*
+    //setter del numero de reacciones de la red social
+    public void setActivoID(int num){
+        this.activoID = num;
+    }*/
+    
     //constructor
     public RedSocial(String nombre){
-        this.nombre = nombre;
+        this.nombreRS = nombre;
         this.numeroUsuarios = 0;
         this.numeroPublicaciones = 0;
         this.numeroComentarios = 0;
@@ -98,10 +119,8 @@ public class RedSocial {
     }
     /**
     * funcionalidad Register que agrega un nuevo usuario a la lista de usuarios de la red social
-    * @red social
     * @param nombre
     * @param contrasena
-    * @return red social
     */
     public void register(String nombre, String contrasena){
         int verificador = 1;
@@ -119,14 +138,21 @@ public class RedSocial {
             nuevoUsuario.setContrasena(contrasena);
             numeroUsuarios += 1;
             nuevoUsuario.setID(numeroUsuarios);
+            nuevoUsuario.numeroSeguidos = 0;
+            nuevoUsuario.listaSeguidos = new ArrayList<String>();
             listaUsuarios.add(nuevoUsuario);
             System.out.println("usuario "+listaUsuarios.get(numeroUsuarios-1).getNombre()+" anadido");
         }
     }
+    /**
+    * funcionalidad Login que coloca en activo a un usuario en red social
+    * @param nombre
+    * @param contrasena
+    */
     public void login(String nombre, String contrasena){
         int verificador = 1;
         for (int i=0; i<numeroUsuarios;i++){
-            if ((this.listaUsuarios.get(i).getNombre().equals(nombre))&&(listaUsuarios.get(i).getContrasena().equals(contrasena))){
+            if ((listaUsuarios.get(i).getNombre().equals(nombre))&&(listaUsuarios.get(i).getContrasena().equals(contrasena))){
                 verificador = 0;
                 activoID = i+1;
                 usuarioActivo = listaUsuarios.get(i);
@@ -136,14 +162,21 @@ public class RedSocial {
         if (verificador == 1){
             System.out.println("No existe el usuario o no coinciden los datos de ingreso");
         }
-        /*else {
-            this.activoID = numeroUsuarios
-            nuevoUsuario.setNombre(nombre);
-            nuevoUsuario.setContrasena(contrasena);
-            numeroUsuarios += 1;
-            nuevoUsuario.setID(numeroUsuarios);
-            listaUsuarios.add(nuevoUsuario);
-            System.out.println("usuario "++" ahora activo");
-        }*/
+    }
+    public void follow(String nombre){
+        int verificador = 1;
+        for (int i=0; i<numeroUsuarios;i++){
+            if (listaUsuarios.get(i).getNombre().equals(usuarioActivo.getNombre())){
+                verificador = 0;
+            }
+        }
+        if (verificador == 1){
+            System.out.println("No existe el usuario a seguir en la red social");
+        }
+        else{
+            usuarioActivo.anadirSeguido(nombre);
+            listaUsuarios.remove(this.getUsuario(usuarioActivo.getNombre()));
+            listaUsuarios.add(usuarioActivo);
+        }
     }
 }

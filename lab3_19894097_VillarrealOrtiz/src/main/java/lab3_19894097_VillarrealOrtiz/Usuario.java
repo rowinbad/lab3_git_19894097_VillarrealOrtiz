@@ -14,9 +14,12 @@ import java.util.ArrayList;
 public class Usuario {
     //Atributos
     int id;
+    int numeroSeguidos;
     String nombre;
     String contrasena;
+    ArrayList<String> listaSeguidos;
     ArrayList<Publicacion> listaPublicaciones;
+    
     //Metodos
     
     //getter de publicaciones del usuario
@@ -54,10 +57,23 @@ public class Usuario {
         this.id = id;
     }
     
-    /*
-    public Usuario(String nombre, String contrasena){
-        this.nombre = nombre;
-        this.contrasena = contrasena;
-        //this.id = 
-    }*/
+    public void anadirSeguido(String nombreUsuario){
+        int verificador = 1;
+        for (int i=0; i<numeroSeguidos;i++){
+            if (listaSeguidos.get(i).equals(nombreUsuario)){
+                verificador = 0;
+            }
+        }
+        if ((nombreUsuario.equals(nombre))){
+            verificador = 0;
+        }
+        if (verificador == 0){
+            System.out.println("No es posible seguir a este usuario");
+        }
+        else{
+            numeroSeguidos += 1;
+            listaSeguidos.add(nombreUsuario);
+            System.out.println("usuario "+listaSeguidos.get(numeroSeguidos-1)+" seguido");
+        }
+    }
 }

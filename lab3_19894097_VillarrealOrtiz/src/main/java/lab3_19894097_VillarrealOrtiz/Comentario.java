@@ -9,7 +9,7 @@ import java.time.LocalTime;
 
 /**
  *
- * @author rowin
+ * @author PabloVillarreal
  */
 public class Comentario {
     //Atributos

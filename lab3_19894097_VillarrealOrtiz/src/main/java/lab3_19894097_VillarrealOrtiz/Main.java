@@ -7,10 +7,11 @@ package lab3_19894097_VillarrealOrtiz;
 
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
- * @author rowin
+ * @author PabloVillarreal
  */
 public class Main {
 
@@ -64,6 +65,24 @@ public class Main {
                 System.out.println("0. Salir del programa");
                 menu = entrada.nextInt();
                 //varios if para las funciones
+                if (menu == 1){
+                    System.out.println("Ingrese tipo de publicacion: ");
+                    entrada.nextLine();
+                    String lecturaTipo = entrada.nextLine();
+                    System.out.println("Ingrese contenido de publicacion: ");
+                    String lecturaContenido = entrada.nextLine();
+                    System.out.println("Ingrese cantidad de dirigidos: ");
+                    int lecturaCantidadDirigidos = entrada.nextInt();
+                    entrada.nextLine();
+                    ArrayList<String> dirigidos = new ArrayList<String>();
+                    while (lecturaCantidadDirigidos > 0){
+                        System.out.println("Ingrese usuario dirigido: ");
+                        String lecturaDirigido = entrada.nextLine();
+                        dirigidos.add(lecturaDirigido);
+                        lecturaCantidadDirigidos -= 1;
+                    }
+                    rs.Post(rs.getUsuarioActivo().getNombre(),lecturaTipo,lecturaContenido,dirigidos);
+                }
                 if (menu == 2){
                     System.out.println("Ingrese nombre: ");
                     entrada.nextLine();

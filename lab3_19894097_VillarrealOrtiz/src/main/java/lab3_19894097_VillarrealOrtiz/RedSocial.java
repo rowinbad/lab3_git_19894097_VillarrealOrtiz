@@ -6,10 +6,11 @@
 package lab3_19894097_VillarrealOrtiz;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
- * @author rowin
+ * @author PabloVillarreal
  */
 public class RedSocial {
     //Atributos
@@ -140,6 +141,7 @@ public class RedSocial {
             nuevoUsuario.setID(numeroUsuarios);
             nuevoUsuario.numeroSeguidos = 0;
             nuevoUsuario.listaSeguidos = new ArrayList<String>();
+            nuevoUsuario.listaPublicaciones = new ArrayList<Publicacion>();
             listaUsuarios.add(nuevoUsuario);
             System.out.println("usuario "+listaUsuarios.get(numeroUsuarios-1).getNombre()+" anadido");
         }
@@ -163,6 +165,10 @@ public class RedSocial {
             System.out.println("No existe el usuario o no coinciden los datos de ingreso");
         }
     }
+    /**
+    * funcionalidad Follow que agrega un usuario a la lista de seguidos del usuario activo en la red social
+    * @param nombre
+    */
     public void follow(String nombre){
         int verificador = 1;
         for (int i=0; i<numeroUsuarios;i++){
@@ -178,5 +184,13 @@ public class RedSocial {
             listaUsuarios.remove(this.getUsuario(usuarioActivo.getNombre()));
             listaUsuarios.add(usuarioActivo);
         }
+    }
+    public void Post(String autor, String tipoPublicacion, String contenido,ArrayList listaDirigidos){
+        numeroPublicaciones += 1;
+        //constructor con las entradas
+        Publicacion nuevaPublicacion = new Publicacion(numeroPublicaciones,autor,tipoPublicacion,contenido,listaDirigidos);
+        usuarioActivo.anadirPublicacion(nuevaPublicacion);
+        listaUsuarios.remove(this.getUsuario(usuarioActivo.getNombre()));
+        listaUsuarios.add(usuarioActivo);
     }
 }

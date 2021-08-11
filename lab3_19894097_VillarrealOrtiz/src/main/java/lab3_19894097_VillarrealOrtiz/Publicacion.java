@@ -5,24 +5,47 @@
  */
 package lab3_19894097_VillarrealOrtiz;
 
+import java.util.Date;
 import java.time.LocalTime;
+import java.util.ArrayList;
         
 /**
  *
- * @author rowin
+ * @author PabloVillarreal
  */
 public class Publicacion {
+    
+    //Atributos
     int id;
     String contenido;
     String tipoPublicacion;
-    LocalTime fechaPublicacion;
-    Usuario usuario;
+    Date fechaPublicacion;
+    String autor;
+    ArrayList<String> listaDirigidos;
+    ArrayList<String> listaCompartidos;
+    ArrayList<Comentario> listaComentarios;
+    ArrayList<Reaccion> listaReacciones;
+    
     //Constructor
-    public Publicacion(Usuario usuario, String contenido, String tipoPublicacion){
+    public Publicacion(int identificacion,String usuario, String tipoPublicacion, String contenido,ArrayList dirigidos){
+        this.id = identificacion;
         this.contenido = contenido;
         this.tipoPublicacion = tipoPublicacion;
-        this.fechaPublicacion = LocalTime.now();
-        this.usuario = usuario;
-        //this.id = 
+        this.fechaPublicacion = new Date();
+        this.autor = usuario;
+        this.listaDirigidos = new ArrayList<String>();
+        this.listaCompartidos = new ArrayList<String>();
+        this.listaComentarios = new ArrayList<Comentario>();
+        this.listaReacciones = new ArrayList<Reaccion>();
+    }
+    
+    //getter del ID de la publicacion
+    public int getID(){
+        return id;
+    }
+    
+    //setter de nombre del usuario
+    public void setID(int identificacion){
+        this.id = identificacion;
     }
 }

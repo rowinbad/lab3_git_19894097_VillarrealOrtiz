@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author rowin
+ * @author PabloVillarreal
  */
 public class Usuario {
     //Atributos
@@ -75,5 +75,10 @@ public class Usuario {
             listaSeguidos.add(nombreUsuario);
             System.out.println("usuario "+listaSeguidos.get(numeroSeguidos-1)+" seguido");
         }
+    }
+    
+    public void anadirPublicacion(Publicacion publicacion){
+        listaPublicaciones.add(publicacion);
+        System.out.println("publicacion numero "+publicacion.getID()+" realizada");
     }
 }

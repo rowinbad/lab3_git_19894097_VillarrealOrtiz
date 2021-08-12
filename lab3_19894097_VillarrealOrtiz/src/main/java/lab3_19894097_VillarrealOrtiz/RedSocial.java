@@ -171,13 +171,13 @@ public class RedSocial {
     * @param nombre
     */
     public void follow(String nombre){
-        int verificador = 1;
+        int verificador = 0;
         for (int i=0; i<numeroUsuarios;i++){
-            if (listaUsuarios.get(i).getNombre().equals(usuarioActivo.getNombre())){
-                verificador = 0;
+            if (listaUsuarios.get(i).getNombre().equals(nombre)){
+                verificador = 1;
             }
         }
-        if (verificador == 1){
+        if (verificador == 0){
             System.out.println("No existe el usuario a seguir en la red social");
         }
         else{
@@ -186,7 +186,14 @@ public class RedSocial {
             listaUsuarios.add(usuarioActivo);
         }
     }
-    public void Post(String autor, String tipoPublicacion, String contenido,ArrayList listaDirigidos){
+    /**
+    * funcionalidad Post que agrega una nueva publicacion a la lista de publicaciones del usuario activo en la red social
+    * @param autor
+    * @param tipoPublicacion
+    * @param contenido
+    * @param listaDirigidos
+    */
+    public void post(String autor, String tipoPublicacion, String contenido,ArrayList listaDirigidos){
         numeroPublicaciones += 1;
         //constructor con las entradas
         Publicacion nuevaPublicacion = new Publicacion(numeroPublicaciones,autor,tipoPublicacion,contenido,listaDirigidos);
@@ -194,6 +201,28 @@ public class RedSocial {
         listaUsuarios.remove(this.getUsuario(usuarioActivo.getNombre()));
         listaUsuarios.add(usuarioActivo);
     }
+    
+    public void share(int identificacion,ArrayList listaDirigidos){
+        if ((identificacion > this.getNumeroPublicaciones())||(identificacion<1)){
+            System.out.println("No existe tal publicacion");
+        }
+        else{
+            for (int i=0; i<numeroUsuarios;i++){
+                System.out.println(numeroUsuarios+" yyy "+listaUsuarios.get(i).getListaPublicaciones().size());
+                for (int j=0; j<listaUsuarios.get(i).getListaPublicaciones().size();j++){
+                    Publicacion publicacionActualizada = (Publicacion) this.listaUsuarios.get(i).getListaPublicaciones().get(j);
+                    if (identificacion == publicacionActualizada.getIDPublicacion()){
+                        listaUsuarios.get(i).getListaPublicaciones().remove(publicacionActualizada);
+                        Compartido nuevoCompartido = new Compartido(this.usuarioActivo.getNombre(),listaDirigidos);
+                        publicacionActualizada.getCompartidos().add(nuevoCompartido);
+                        listaUsuarios.get(i).getListaPublicaciones().add(publicacionActualizada);
+                        System.out.println("Compartida publicacion "+publicacionActualizada.getIDPublicacion());
+                    }
+                }
+            }
+        }
+    }
+    
     public String socialNetworkToString(){
         String salida;
         salida = "### Red Social "+nombreRS+" ###";
@@ -215,7 +244,7 @@ public class RedSocial {
             return salida;
         }
     }
-    public void PrintSocialNetwork(String salida){
+    public void printSocialNetwork(String salida){
         System.out.println(salida);
     }
 }

@@ -56,7 +56,7 @@ public class Main {
                 }
                 if (menu == 3){
                     String salida = rs.socialNetworkToString();
-                    rs.PrintSocialNetwork(salida);
+                    rs.printSocialNetwork(salida);
                 }
             }
             while ((rs.activoID != 0)&&(menu != 0)) {
@@ -86,7 +86,7 @@ public class Main {
                         dirigidos.add(lecturaDirigido);
                         lecturaCantidadDirigidos -= 1;
                     }
-                    rs.Post(rs.getUsuarioActivo().getNombre(),lecturaTipo,lecturaContenido,dirigidos);
+                    rs.post(rs.getUsuarioActivo().getNombre(),lecturaTipo,lecturaContenido,dirigidos);
                 }
                 if (menu == 2){
                     System.out.println("Ingrese nombre: ");
@@ -94,9 +94,24 @@ public class Main {
                     String lecturaNombre = entrada.nextLine();
                     rs.follow(lecturaNombre);
                 }
+                if (menu == 3){
+                    System.out.println("Ingrese ID de la publicacion: ");
+                    int lecturaID = entrada.nextInt();
+                    System.out.println("Ingrese cantidad de dirigidos: ");
+                    int lecturaCantidadDirigidos = entrada.nextInt();
+                    entrada.nextLine();
+                    ArrayList<String> dirigidos = new ArrayList<String>();
+                    while (lecturaCantidadDirigidos > 0){
+                        System.out.println("Ingrese usuario dirigido: ");
+                        String lecturaDirigido = entrada.nextLine();
+                        dirigidos.add(lecturaDirigido);
+                        lecturaCantidadDirigidos -= 1;
+                    }
+                    rs.share(lecturaID,dirigidos);
+                }
                 if (menu == 4){
                     String salida = rs.socialNetworkToString();
-                    rs.PrintSocialNetwork(salida);
+                    rs.printSocialNetwork(salida);
                 }
                 if (menu == 5){
                     rs.setActivoID(0);

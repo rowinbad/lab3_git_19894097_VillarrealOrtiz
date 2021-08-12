@@ -81,7 +81,7 @@ public class Usuario {
     
     public void anadirPublicacion(Publicacion publicacion){
         listaPublicaciones.add(publicacion);
-        System.out.println("publicacion numero "+publicacion.getID()+" realizada");
+        System.out.println("publicacion numero "+publicacion.getIDPublicacion()+" realizada");
     }
     
     public String usuarioToString(){
@@ -90,10 +90,11 @@ public class Usuario {
         for (int i=0; i<listaSeguidos.size();i++){
             salida = salida+listaSeguidos.get(i)+"\n";
         }
+        salida = salida+"--------------------------------\n";
         for (int i=0; i<listaPublicaciones.size();i++){
+            //salida = salida+listaPublicaciones.get(i).publicacionToString()+"\n";
             salida = salida+listaPublicaciones.get(i).publicacionToString()+"\n";
         }
-        salida = salida+"--------------------------------\n";
         return salida;
     }
 }

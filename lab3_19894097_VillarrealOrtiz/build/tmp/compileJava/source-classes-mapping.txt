@@ -1,5 +1,5 @@
-lab3_19894097_VillarrealOrtiz/Publicacion.java
- lab3_19894097_VillarrealOrtiz.Publicacion
+lab3_19894097_VillarrealOrtiz/Compartido.java
+ lab3_19894097_VillarrealOrtiz.Compartido
 lab3_19894097_VillarrealOrtiz/Main.java
  lab3_19894097_VillarrealOrtiz.Main
 lab3_19894097_VillarrealOrtiz/Comentario.java
@@ -10,3 +10,5 @@ lab3_19894097_VillarrealOrtiz/Usuario.java
  lab3_19894097_VillarrealOrtiz.Usuario
 lab3_19894097_VillarrealOrtiz/RedSocial.java
  lab3_19894097_VillarrealOrtiz.RedSocial
+lab3_19894097_VillarrealOrtiz/Publicacion.java
+ lab3_19894097_VillarrealOrtiz.Publicacion

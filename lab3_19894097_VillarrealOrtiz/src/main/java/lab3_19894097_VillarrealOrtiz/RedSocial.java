@@ -142,6 +142,7 @@ public class RedSocial {
             nuevoUsuario.numeroSeguidos = 0;
             nuevoUsuario.listaSeguidos = new ArrayList<String>();
             nuevoUsuario.listaPublicaciones = new ArrayList<Publicacion>();
+            nuevoUsuario.fechaCreacion = new Date();
             listaUsuarios.add(nuevoUsuario);
             System.out.println("usuario "+listaUsuarios.get(numeroUsuarios-1).getNombre()+" anadido");
         }
@@ -192,5 +193,29 @@ public class RedSocial {
         usuarioActivo.anadirPublicacion(nuevaPublicacion);
         listaUsuarios.remove(this.getUsuario(usuarioActivo.getNombre()));
         listaUsuarios.add(usuarioActivo);
+    }
+    public String socialNetworkToString(){
+        String salida;
+        salida = "### Red Social "+nombreRS+" ###";
+        if (activoID == 0){
+            salida = salida+"\n---Sin usuario activo---\n";
+            //string usuario
+            for (int i=0; i<numeroUsuarios;i++){
+                salida = salida+listaUsuarios.get(i).usuarioToString();
+            }
+            //final
+            salida = salida+"\n-----Fin de la red-----";
+            return salida;
+        }
+        else {
+            salida = salida+"\n---usuario activo: "+usuarioActivo.getNombre()+"---\n";
+            salida = salida+usuarioActivo.usuarioToString();
+            //final
+            salida = salida+"\n-----Fin de la red-----";
+            return salida;
+        }
+    }
+    public void PrintSocialNetwork(String salida){
+        System.out.println(salida);
     }
 }

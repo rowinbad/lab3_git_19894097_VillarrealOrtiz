@@ -6,6 +6,7 @@
 package lab3_19894097_VillarrealOrtiz;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
@@ -17,6 +18,7 @@ public class Usuario {
     int numeroSeguidos;
     String nombre;
     String contrasena;
+    Date fechaCreacion;
     ArrayList<String> listaSeguidos;
     ArrayList<Publicacion> listaPublicaciones;
     
@@ -80,5 +82,18 @@ public class Usuario {
     public void anadirPublicacion(Publicacion publicacion){
         listaPublicaciones.add(publicacion);
         System.out.println("publicacion numero "+publicacion.getID()+" realizada");
+    }
+    
+    public String usuarioToString(){
+        String salida;
+        salida = "Usuario numero "+id+"\nNombre: "+nombre+"\nFecha de creacion: "+fechaCreacion+"\nSigue a: \n";
+        for (int i=0; i<listaSeguidos.size();i++){
+            salida = salida+listaSeguidos.get(i)+"\n";
+        }
+        for (int i=0; i<listaPublicaciones.size();i++){
+            salida = salida+listaPublicaciones.get(i).publicacionToString()+"\n";
+        }
+        salida = salida+"--------------------------------\n";
+        return salida;
     }
 }

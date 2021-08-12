@@ -48,4 +48,14 @@ public class Publicacion {
     public void setID(int identificacion){
         this.id = identificacion;
     }
+    
+    public String publicacionToString(){
+        String salida = "Publicacion numero "+id+"\n";
+        salida = salida+"Publicada por: "+autor+"\nFecha de publicacion: "+fechaPublicacion+"\nTipo: "+tipoPublicacion+"\n"+"Contenido: "+contenido+"\n";
+        for (int i=0; i<listaDirigidos.size();i++){
+            salida = salida+listaDirigidos.get(i);
+        }
+        salida = salida+"--------------------------------\n";
+        return salida;
+    }
 }

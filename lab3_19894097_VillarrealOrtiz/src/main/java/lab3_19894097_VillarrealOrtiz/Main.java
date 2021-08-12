@@ -30,7 +30,8 @@ public class Main {
                 System.out.println("Elija su opcion");
                 System.out.println("1. Register");              //funcionalidad Register
                 System.out.println("2. Login");                 //funcionalidad Login
-                System.out.println("0. Salir del programa");    
+                System.out.println("3. Visualizar red social");
+                System.out.println("0. Salir del programa");
                 menu = entrada.nextInt();
                 //varios if para las funciones
                 if (menu == 1){
@@ -52,6 +53,10 @@ public class Main {
                     System.out.println("Ingrese contrasena: ");
                     String lecturaContrasena = entrada.nextLine();
                     rs.login(lecturaNombre,lecturaContrasena);
+                }
+                if (menu == 3){
+                    String salida = rs.socialNetworkToString();
+                    rs.PrintSocialNetwork(salida);
                 }
             }
             while ((rs.activoID != 0)&&(menu != 0)) {
@@ -88,6 +93,10 @@ public class Main {
                     entrada.nextLine();
                     String lecturaNombre = entrada.nextLine();
                     rs.follow(lecturaNombre);
+                }
+                if (menu == 4){
+                    String salida = rs.socialNetworkToString();
+                    rs.PrintSocialNetwork(salida);
                 }
                 if (menu == 5){
                     rs.setActivoID(0);

@@ -28,8 +28,8 @@ public class Main {
             if (activo == 0){
                 System.out.println("### Authentication ###");
                 System.out.println("Elija su opcion");
-                System.out.println("1. Register");              //funcionalidad Register
-                System.out.println("2. Login");                 //funcionalidad Login
+                System.out.println("1. Registrar usuario");              //funcionalidad Register
+                System.out.println("2. Iniciar sesion");                 //funcionalidad Login
                 System.out.println("3. Visualizar red social");
                 System.out.println("0. Salir del programa");
                 menu = entrada.nextInt();

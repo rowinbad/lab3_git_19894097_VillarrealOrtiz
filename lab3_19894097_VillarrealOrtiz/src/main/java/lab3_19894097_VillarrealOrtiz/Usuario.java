@@ -15,7 +15,6 @@ import java.util.Date;
 public class Usuario {
     //Atributos
     int id;
-    int numeroSeguidos;
     String nombre;
     String contrasena;
     Date fechaCreacion;
@@ -61,7 +60,7 @@ public class Usuario {
     
     public void anadirSeguido(String nombreUsuario){
         int verificador = 1;
-        for (int i=0; i<numeroSeguidos;i++){
+        for (int i=0; i<this.listaSeguidos.size();i++){
             if (listaSeguidos.get(i).equals(nombreUsuario)){
                 verificador = 0;
             }
@@ -73,9 +72,8 @@ public class Usuario {
             System.out.println("No es posible seguir a este usuario");
         }
         else{
-            numeroSeguidos += 1;
             listaSeguidos.add(nombreUsuario);
-            System.out.println("usuario "+listaSeguidos.get(numeroSeguidos-1)+" seguido");
+            System.out.println("usuario "+nombreUsuario+" seguido");
         }
     }
     

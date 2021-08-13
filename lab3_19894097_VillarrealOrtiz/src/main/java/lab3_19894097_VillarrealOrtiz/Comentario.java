@@ -5,7 +5,8 @@
  */
 package lab3_19894097_VillarrealOrtiz;
 
-import java.time.LocalTime;
+import java.util.Date;
+
 
 /**
  *
@@ -15,7 +16,7 @@ public class Comentario {
     //Atributos
     int id;
     String contenido;
-    LocalTime fechaPublicacion;
+    Date fechaPublicacion;
     Usuario usuario;
     //Metodos
 }

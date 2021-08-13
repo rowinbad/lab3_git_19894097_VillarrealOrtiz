@@ -139,7 +139,6 @@ public class RedSocial {
             nuevoUsuario.setContrasena(contrasena);
             numeroUsuarios += 1;
             nuevoUsuario.setID(numeroUsuarios);
-            nuevoUsuario.numeroSeguidos = 0;
             nuevoUsuario.listaSeguidos = new ArrayList<String>();
             nuevoUsuario.listaPublicaciones = new ArrayList<Publicacion>();
             nuevoUsuario.fechaCreacion = new Date();
@@ -201,14 +200,17 @@ public class RedSocial {
         listaUsuarios.remove(this.getUsuario(usuarioActivo.getNombre()));
         listaUsuarios.add(usuarioActivo);
     }
-    
+    /**
+    * funcionalidad Share que agrega un registro de compartido nuevo a la lista de compartidos de la publicación seleccionada en la red social
+    * @param identificacion
+    * @param listaDirigidos
+    */
     public void share(int identificacion,ArrayList listaDirigidos){
         if ((identificacion > this.getNumeroPublicaciones())||(identificacion<1)){
             System.out.println("No existe tal publicacion");
         }
         else{
             for (int i=0; i<numeroUsuarios;i++){
-                System.out.println(numeroUsuarios+" yyy "+listaUsuarios.get(i).getListaPublicaciones().size());
                 for (int j=0; j<listaUsuarios.get(i).getListaPublicaciones().size();j++){
                     Publicacion publicacionActualizada = (Publicacion) this.listaUsuarios.get(i).getListaPublicaciones().get(j);
                     if (identificacion == publicacionActualizada.getIDPublicacion()){
@@ -222,7 +224,10 @@ public class RedSocial {
             }
         }
     }
-    
+    /**
+    * funcionalidad de Visualize que crea un string a partir del usuario activo y la red social
+    * @return salida
+    */
     public String socialNetworkToString(){
         String salida;
         salida = "### Red Social "+nombreRS+" ###";
@@ -244,6 +249,10 @@ public class RedSocial {
             return salida;
         }
     }
+    /**
+    * funcionalidad de Visualize que muestra por pantalla un string, en especifico el que representa la red social
+    * @param salida
+    */
     public void printSocialNetwork(String salida){
         System.out.println(salida);
     }
